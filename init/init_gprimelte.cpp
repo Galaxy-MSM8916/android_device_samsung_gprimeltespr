@@ -36,20 +36,16 @@
 #include "log.h"
 #include "util.h"
 
-void vendor_load_properties(void)
+void init_target_properties(void)
 {
-    char bootloader[PROP_VALUE_MAX];
-    int rc;
+    char c_bootloader[PROP_VALUE_MAX];
+    char device[PROP_VALUE_MAX];
 
-    rc = property_get("ro.bootloader", bootloader);
-    if (!rc) {
-	property_set("ro.product.model", "SM-XXXX");
-	property_set("ro.product.device", "unknown");
-        property_set("ro.build.description", "lineage_unknown-userdebug 6.0.1 MOB31K 4dae919457 test-keys");
-        property_set("ro.build.display.id", "lineage_unknown-userdebug 6.0.1 MOB31K 4dae919457 test-keys");
-        property_set("ro.build.fingerprint", "samsung/lineage_unknown/unknown:6.0.1/MOB31K/4dae919457:userdebug/test-keys");
-	}
-    else if (bootloader[4] == 'W') {
+    /* get the bootloader string */
+    property_get("ro.bootloader", c_bootloader);
+    std::string bootloader (c_bootloader);
+
+    if (bootloader.find("G530W") == 0) {
         property_set("ro.build.product", "gprimeltecan");
         property_set("ro.product.device", "gprimeltecan");
         property_set("ro.cm.device", "gprimeltecan");
@@ -57,25 +53,31 @@ void vendor_load_properties(void)
         property_set("ro.build.description", "lineage_gprimeltecan-userdebug 6.0.1 MOB31K 4dae919457 test-keys");
         property_set("ro.build.display.id", "lineage_gprimeltecan-userdebug 6.0.1 MOB31K 4dae919457 test-keys");
         property_set("ro.build.fingerprint", "samsung/lineage_gprimeltecan/gprimeltecan:6.0.1/MOB31K/4dae919457:userdebug/test-keys");
-	}
-    else if (bootloader[4] == 'T') {
-		if (bootloader[5] == '1') {
-			property_set("ro.build.product", "gprimeltemtr");
-			property_set("ro.product.device", "gprimeltemtr");
-			property_set("ro.cm.device", "gprimeltemtr");
-			property_set("ro.product.model", "SM-G530T1");
-			property_set("ro.build.description", "lineage_gprimeltemtr-userdebug 6.0.1 MOB31K 4dae919457 test-keys");
-			property_set("ro.build.display.id", "lineage_gprimeltemtr-userdebug 6.0.1 MOB31K 4dae919457 test-keys");
-			property_set("ro.build.fingerprint", "samsung/lineage_gprimeltemtr/gprimeltemtr:6.0.1/MOB31K/4dae919457:userdebug/test-keys");
-		}
-		else {
-			property_set("ro.build.product", "gprimeltetmo");
-			property_set("ro.product.device", "gprimeltetmo");
-			property_set("ro.cm.device", "gprimeltetmo");
-			property_set("ro.product.model", "SM-G530T");
-			property_set("ro.build.description", "lineage_gprimeltetmo-userdebug 6.0.1 MOB31K 4dae919457 test-keys");
-			property_set("ro.build.display.id", "lineage_gprimeltetmo-userdebug 6.0.1 MOB31K 4dae919457 test-keys");
-			property_set("ro.build.fingerprint", "samsung/lineage_gprimeltetmo/gprimeltetmo:6.0.1/MOB31K/4dae919457:userdebug/test-keys");
-		}
-	}
+    }
+    else if (bootloader.find("G530T1") == 0) {
+        property_set("ro.build.product", "gprimeltemtr");
+        property_set("ro.product.device", "gprimeltemtr");
+        property_set("ro.cm.device", "gprimeltemtr");
+        property_set("ro.product.model", "SM-G530T1");
+        property_set("ro.build.description", "lineage_gprimeltemtr-userdebug 6.0.1 MOB31K 4dae919457 test-keys");
+        property_set("ro.build.display.id", "lineage_gprimeltemtr-userdebug 6.0.1 MOB31K 4dae919457 test-keys");
+        property_set("ro.build.fingerprint", "samsung/lineage_gprimeltemtr/gprimeltemtr:6.0.1/MOB31K/4dae919457:userdebug/test-keys");
+    }
+    else if (bootloader.find("G530T") == 0) {
+        property_set("ro.build.product", "gprimeltetmo");
+        property_set("ro.product.device", "gprimeltetmo");
+        property_set("ro.cm.device", "gprimeltetmo");
+        property_set("ro.product.model", "SM-G530T");
+        property_set("ro.build.description", "lineage_gprimeltetmo-userdebug 6.0.1 MOB31K 4dae919457 test-keys");
+        property_set("ro.build.display.id", "lineage_gprimeltetmo-userdebug 6.0.1 MOB31K 4dae919457 test-keys");
+        property_set("ro.build.fingerprint", "samsung/lineage_gprimeltetmo/gprimeltetmo:6.0.1/MOB31K/4dae919457:userdebug/test-keys");
+    }
+    property_get("ro.product.device", device);
+    INFO("Found bootloader id %s setting build properties for %s device\n", c_bootloader, device);
+}
+
+void vendor_load_properties(void)
+{
+    /* set the device properties */
+    init_target_properties();
 }
