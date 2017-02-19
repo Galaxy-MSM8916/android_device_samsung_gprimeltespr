@@ -38,14 +38,13 @@
 
 void init_target_properties(void)
 {
-    char c_bootloader[PROP_VALUE_MAX];
+    char bootloader[PROP_VALUE_MAX];
     char device[PROP_VALUE_MAX];
 
     /* get the bootloader string */
-    property_get("ro.bootloader", c_bootloader);
-    std::string bootloader (c_bootloader);
+    property_get("ro.bootloader", bootloader);
 
-    if (bootloader.find("G530W") == 0) {
+    if (strstr(bootloader,"G530W")) {
         property_set("ro.build.product", "gprimeltecan");
         property_set("ro.product.device", "gprimeltecan");
         property_set("ro.cm.device", "gprimeltecan");
@@ -54,7 +53,7 @@ void init_target_properties(void)
         property_set("ro.build.display.id", "lineage_gprimeltecan-userdebug 6.0.1 MOB31K 4dae919457 test-keys");
         property_set("ro.build.fingerprint", "samsung/lineage_gprimeltecan/gprimeltecan:6.0.1/MOB31K/4dae919457:userdebug/test-keys");
     }
-    else if (bootloader.find("G530T1") == 0) {
+    else if (strstr(bootloader,"G530T1")) {
         property_set("ro.build.product", "gprimeltemtr");
         property_set("ro.product.device", "gprimeltemtr");
         property_set("ro.cm.device", "gprimeltemtr");
@@ -63,7 +62,7 @@ void init_target_properties(void)
         property_set("ro.build.display.id", "lineage_gprimeltemtr-userdebug 6.0.1 MOB31K 4dae919457 test-keys");
         property_set("ro.build.fingerprint", "samsung/lineage_gprimeltemtr/gprimeltemtr:6.0.1/MOB31K/4dae919457:userdebug/test-keys");
     }
-    else if (bootloader.find("G530T") == 0) {
+    else if (strstr(bootloader,"G530T")) {
         property_set("ro.build.product", "gprimeltetmo");
         property_set("ro.product.device", "gprimeltetmo");
         property_set("ro.cm.device", "gprimeltetmo");
@@ -73,7 +72,7 @@ void init_target_properties(void)
         property_set("ro.build.fingerprint", "samsung/lineage_gprimeltetmo/gprimeltetmo:6.0.1/MOB31K/4dae919457:userdebug/test-keys");
     }
     property_get("ro.product.device", device);
-    INFO("Found bootloader id %s setting build properties for %s device\n", c_bootloader, device);
+    INFO("Found bootloader id %s setting build properties for %s device\n", bootloader, device);
 }
 
 void vendor_load_properties(void)
