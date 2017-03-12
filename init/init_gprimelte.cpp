@@ -65,6 +65,24 @@ void init_target_properties(void)
         property_set("ro.build.description", "lineage_gprimeltetmo-userdebug 6.0.1 MOB31K 4dae919457 test-keys");
         property_set("ro.build.fingerprint", "samsung/lineage_gprimeltetmo/gprimeltetmo:6.0.1/MOB31K/4dae919457:userdebug/test-keys");
     }
+    else if (strstr(bootloader,"G530P")) {
+        property_set("ro.build.product", "gprimeltespr");
+        property_set("ro.product.device", "gprimeltespr");
+        property_set("ro.product.model", "SM-G530P");
+	/* radio properties */
+        property_set("telephony.lteOnCdmaDevice", "1");
+        property_set("persist.radio.snapshot_enabled", "1");
+        property_set("persist.radio.snapshot_timer", "22");
+        property_set("persist.radio.sib16_support", "1");
+        property_set("ro.config.combined_signal", "true");
+        property_set("ro.ril.ecclist", "911,#911,*911");
+        property_set("ro.cdma.default_numeric", "310000");
+        property_set("ro.cdma.default_alpha", "Chameleon");
+	/* end radio properties */
+        property_set("ro.build.description", "lineage_gprimeltespr-userdebug 6.0.1 MOB31K 4dae919457 test-keys");
+        property_set("ro.build.fingerprint", "samsung/lineage_gprimeltespr/gprimeltespr:6.0.1/MOB31K/4dae919457:userdebug/test-keys");
+
+    }
     property_get("ro.product.device", device);
     INFO("Found bootloader id %s setting build properties for %s device\n", bootloader, device);
 }
