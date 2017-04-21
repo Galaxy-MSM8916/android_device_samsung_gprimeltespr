@@ -1,16 +1,13 @@
 # Inherit from common
-include device/samsung/gprimelte-common/BoardConfigCommon.mk
+include device/samsung/gprimeltespr-common/BoardConfigCommon.mk
 
-LOCAL_PATH := device/samsung/gprimelte
+LOCAL_PATH := device/samsung/gprimeltespr
 
 # Asserts
-TARGET_OTA_ASSERT_DEVICE := gprimelte,gprimeltecan,gprimeltetmo,gprimeltemtr,gprimeltespr
-
-# Init
-TARGET_UNIFIED_DEVICE := true
+TARGET_OTA_ASSERT_DEVICE := gprimeltespr
 
 # Kernel
-TARGET_KERNEL_VARIANT_CONFIG := msm8916_sec_fortuna_can_defconfig
+TARGET_KERNEL_VARIANT_CONFIG := msm8916_sec_fortuna_spr_defconfig
 
 # Partition sizes
 BOARD_SYSTEMIMAGE_PARTITION_SIZE    := 2233466880

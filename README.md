@@ -1,6 +1,6 @@
-# android_device_samsung_gprimelte
+# android_device_samsung_gprimeltespr
 
-## Unified device tree for Samsung Galaxy Grand Prime [G530P/T/T1/W]
+## Device tree for Samsung Galaxy Grand Prime [G530P]
 
 Basic   | Spec Sheet
 -------:|:-------------------------
