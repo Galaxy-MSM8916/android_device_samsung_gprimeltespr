@@ -1,6 +1,6 @@
 
 # Inherit from common
-$(call inherit-product, device/samsung/gprimeltespr-common/lineage.mk)
+$(call inherit-product, device/samsung/gprimelte-common/lineage.mk)
 
 $(call inherit-product, device/samsung/gprimeltespr/device.mk)
 

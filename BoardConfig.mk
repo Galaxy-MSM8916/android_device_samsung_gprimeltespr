@@ -1,5 +1,5 @@
 # Inherit from common
-include device/samsung/gprimeltespr-common/BoardConfigCommon.mk
+include device/samsung/gprimelte-common/BoardConfigCommon.mk
 
 LOCAL_PATH := device/samsung/gprimeltespr
 
