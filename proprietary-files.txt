@@ -106,4 +106,4 @@ vendor/lib/lib-sec-disp.so
 bin/rild
 lib/libril.so
 lib/librilutils.so
-lib/libsec-ril.so
+lib/libsec-ril.so|9ccd2d9898b6c8677d02bf94fc80dd2a
