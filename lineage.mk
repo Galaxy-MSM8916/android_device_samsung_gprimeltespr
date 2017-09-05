@@ -10,6 +10,5 @@ PRODUCT_NAME := lineage_gprimeltespr
 PRODUCT_BRAND := samsung
 PRODUCT_MODEL := SM-G530P
 PRODUCT_MANUFACTURER := samsung
-PRODUCT_CHARACTERISTICS := phone
 
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
