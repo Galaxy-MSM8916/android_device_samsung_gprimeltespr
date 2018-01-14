@@ -1,6 +1,9 @@
 # CABL
 ro.qualcomm.cabl=0
 
+# NFC
+ro.nfc.sec_hal=true
+
 # RAM
 ro.config.low_ram=false
 ro.config.zram=false
