@@ -6,10 +6,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.nfc.sec_hal=true
 
-# RAM
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.config.low_ram=false
-
 # RADIO
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.radio.snapshot_enabled=1 \
